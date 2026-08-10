@@ -1,0 +1,14 @@
+# sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# editores
+.vscode/
+.idea/
+
+# vercel
+.vercel/
+
+# nada de node acá: el sitio es HTML plano
+node_modules/

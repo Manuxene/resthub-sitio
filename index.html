@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RestHub-IA — Agente de voz y menú digital para restaurantes</title>
+<meta name="description" content="Un asistente con IA que atiende el teléfono de tu restaurante y un menú digital por tag NFC en la mesa. Reservas y pedidos resueltos solos. Desde USD 60 al mes.">
+<link rel="canonical" href="https://resthub.cloud/">
+<meta name="theme-color" content="#05080F">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="RestHub-IA">
+<meta property="og:title" content="RestHub-IA — Agente de voz y menú digital para restaurantes">
+<meta property="og:description" content="Atiende las llamadas de tu restaurante con IA y poné la carta en la mesa con un tag NFC. Desde USD 60 al mes.">
+<meta property="og:url" content="https://resthub.cloud/">
+<meta property="og:image" content="https://resthub.cloud/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="nav" id="nav">
+  <div class="contenedor nav__caja">
+    <a class="marca" href="#" aria-label="RestHub-IA, inicio">
+      <span class="marca__badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#05080F" stroke-width="2" stroke-linecap="round">
+          <path d="M4 13v-1a8 8 0 0 1 16 0v1"/><rect x="2" y="13" width="5" height="7" rx="2" fill="#05080F" stroke="none"/>
+          <rect x="17" y="13" width="5" height="7" rx="2" fill="#05080F" stroke="none"/>
+        </svg>
+      </span>
+      <span class="marca__texto">
+        <strong>RestHub-IA</strong>
+        <small>IA para gastronomía</small>
+      </span>
+    </a>
+    <nav class="nav__links" aria-label="Principal">
+      <a href="#agente" id="nav-como-funciona">Cómo funciona</a>
+      <a href="#precios">Planes</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="boton boton--cian nav__cta" href="https://wa.me/5492984904013?text=Hola!%20Quiero%20agendar%20una%20demo%20de%20RestHub-IA" target="_blank" rel="noopener">Agendar demo</a>
+  </div>
+</header>
+
+<main id="contenido">
+
+<!-- ═══════════ PORTADA ═══════════ -->
+<section class="hero" id="hero">
+  <div class="hero__fondo" aria-hidden="true"></div>
+
+  <div class="contenedor hero__caja">
+
+    <!-- títulos gigantes de fondo -->
+    <div class="titulones" aria-hidden="true">
+      <span class="tituloni es-actual" data-e="0">AGENTE DE VOZ</span>
+      <span class="tituloni" data-e="1">MENUTAG</span>
+      <span class="tituloni" data-e="2">COMBINADO</span>
+    </div>
+
+    <!-- fotos flotando -->
+    <div class="flotantes" aria-hidden="true">
+      <img class="flota flota--a" src="img/comida-lentejas.webp" alt="" width="600" height="422" loading="eager">
+      <img class="flota flota--b" src="img/comida-pizza.webp"    alt="" width="612" height="392" loading="eager">
+      <img class="flota flota--c" src="img/comida-bife.webp"     alt="" width="610" height="350" loading="lazy">
+      <img class="flota flota--d" src="img/comida-burger.webp"   alt="" width="598" height="484" loading="lazy">
+      <img class="flota flota--e" src="img/tag-nfc-disco.webp"   alt="" width="442" height="276" loading="lazy">
+    </div>
+
+    <!-- celulares -->
+    <div class="celulares">
+
+      <!-- escena 1 · Agente de Voz -->
+      <div class="escena-cel es-actual" data-e="0">
+
+        <div class="telefono telefono--atras telefono--wa">
+          <div class="pantalla pantalla--wa pantalla--dos">
+
+            <!-- 1 · pedido con envío -->
+            <div class="vista">
+              <div class="wa-header"><span class="wa-avatar">BE</span><span class="wa-nombre">Bodegón La Esquina</span></div>
+              <div class="wa-chat">
+                <div class="wa-scroll">
+                  <p class="burb burb--in">Hola! Hacen envíos a la zona sur?</p>
+                  <p class="burb burb--out">¡Hola! Sí, llegamos hasta Fisherton. El envío sale $ 1.800.</p>
+                  <p class="burb burb--in">Perfecto. Quería dos milanesas napolitanas.</p>
+                  <p class="burb burb--out">Anotado. Son $ 29.600 y lo tenés en 40 minutos.</p>
+                  <p class="burb burb--in">¿Aceptan transferencia?</p>
+                  <p class="burb burb--out">Sí. Te paso el alias cuando salga el pedido.</p>
+                  <p class="burb burb--in">Dale. ¿Y tienen algo sin TACC?</p>
+                  <p class="burb burb--out">Sí, tres platos. Los prepara la cocina en sector separado.</p>
+                  <p class="burb burb--in">Buenísimo. Sumame una provoleta entonces.</p>
+                  <p class="burb burb--out">Anotada. Queda en $ 37.500 con el envío.</p>
+                  <p class="burb burb--in">Perfecto, mandá.</p>
+                  <p class="burb burb--out">Listo. Sale a las 21:40 y te aviso cuando esté en camino.</p>
+                  <p class="burb burb--in">Gracias!</p>
+                  <p class="burb burb--out">Cualquier cosa escribime por acá. ¡Buen provecho!</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2 · otra conversación: reserva -->
+            <div class="vista">
+              <div class="wa-header"><span class="wa-avatar">BE</span><span class="wa-nombre">Bodegón La Esquina</span></div>
+              <div class="wa-chat">
+                <div class="wa-scroll">
+                  <p class="burb burb--in">Buenas, tienen mesa para seis el sábado?</p>
+                  <p class="burb burb--out">¡Hola! Sí. ¿A qué hora les queda cómodo?</p>
+                  <p class="burb burb--in">Nueve y media.</p>
+                  <p class="burb burb--out">Perfecto. ¿A nombre de quién la dejo?</p>
+                  <p class="burb burb--in">Lucía Paz. Vamos con un bebé, ¿tienen silla alta?</p>
+                  <p class="burb burb--out">Sí, dos. Te reservo la mesa del fondo que es más tranquila.</p>
+                  <p class="burb burb--in">Genial. ¿Se puede pagar con tarjeta?</p>
+                  <p class="burb burb--out">Débito, crédito o transferencia. Como te quede mejor.</p>
+                  <p class="burb burb--in">¿Y estacionamiento?</p>
+                  <p class="burb burb--out">Cochera propia sobre la calle lateral, sin cargo.</p>
+                  <p class="burb burb--in">Perfecto, listo entonces.</p>
+                  <p class="burb burb--out">Confirmado: sábado 21:30, seis personas, a nombre de Lucía.</p>
+                  <p class="burb burb--in">Muchas gracias!</p>
+                  <p class="burb burb--out">A vos. ¡Nos vemos el sábado!</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="telefono telefono--frente">
+          <div class="pantalla pantalla--llamada">
+
+            <!-- 1 · reserva -->
+            <div class="vista">
+              <div class="ll-cab">
+                <p class="ll-estado"><span class="punto"></span>Llamada en curso<span class="ll-crono">00:38</span></p>
+                <div class="ll-quien">
+                  <span class="ll-avatar">MG</span>
+                  <span><strong>Martina Gómez</strong><small>+54 9 298 447 2210</small></span>
+                </div>
+                <span class="chip">Atiende el agente</span>
+              </div>
+              <div class="ll-trans"><div class="ll-scroll">
+                <p><b>Cliente</b>Hola, ¿tienen mesa para cuatro esta noche?</p>
+                <p class="es-agente"><b>Agente</b>¡Hola! Sí, tenemos disponibilidad. ¿A qué hora les queda cómodo?</p>
+                <p><b>Cliente</b>Nueve y media estaría bien.</p>
+                <p class="es-agente"><b>Agente</b>Perfecto. ¿A nombre de quién la dejo?</p>
+                <p><b>Cliente</b>Martina Gómez. ¿Tienen algo sin TACC? Viene una amiga celíaca.</p>
+                <p class="es-agente"><b>Agente</b>Sí, tres platos. Dejo la nota en cocina así lo preparan aparte.</p>
+                <p><b>Cliente</b>Buenísimo, gracias.</p>
+                <p class="es-agente"><b>Agente</b>¿Querés que te avise si se libera una mesa más temprano?</p>
+                <p><b>Cliente</b>Dale, me servís.</p>
+                <p class="es-agente"><b>Agente</b>¿Vienen en auto? Tenemos cochera propia sin cargo.</p>
+                <p><b>Cliente</b>Sí, perfecto.</p>
+                <p class="es-agente"><b>Agente</b>Listo, Martina. Mesa para cuatro a las 21:30. Te mando la confirmación por mensaje.</p>
+              </div></div>
+              <div class="ll-result"><small>Resultado</small><strong>Reserva cargada · 4 personas · 21:30</strong></div>
+            </div>
+
+            <!-- 2 · el registro que ve el restaurante -->
+            <div class="vista">
+              <div class="rg-cab"><strong>Llamadas</strong><span class="rg-hoy">Hoy · 14 atendidas</span></div>
+              <div class="rg-lista"><div class="rg-scroll">
+                <div class="rg-fila"><span class="rg-av">MG</span><span><strong>Martina Gómez</strong><small>Reserva 4 pers. · 21:30</small></span><b>0:38</b></div>
+                <div class="rg-fila"><span class="rg-av">CF</span><span><strong>Carlos Ferrer</strong><small>Pedido para retirar</small></span><b>1:12</b></div>
+                <div class="rg-fila"><span class="rg-av">LP</span><span><strong>Lucía Paz</strong><small>Consulta sin TACC</small></span><b>0:41</b></div>
+                <div class="rg-fila"><span class="rg-av">RS</span><span><strong>Ramiro Sosa</strong><small>Horarios y pagos</small></span><b>0:29</b></div>
+                <div class="rg-fila"><span class="rg-av">SM</span><span><strong>Sofía Márquez</strong><small>Cambio de horario</small></span><b>0:52</b></div>
+                <div class="rg-fila"><span class="rg-av rg-av--deriv">NV</span><span><strong>Nicolás Vera</strong><small>Derivada al encargado</small></span><b>1:35</b></div>
+                <div class="rg-fila"><span class="rg-av">JT</span><span><strong>Julián Torres</strong><small>Reserva 2 pers. · 20:00</small></span><b>0:33</b></div>
+                <div class="rg-fila"><span class="rg-av">AB</span><span><strong>Ana Benítez</strong><small>Pedido con envío</small></span><b>1:04</b></div>
+                <div class="rg-fila"><span class="rg-av">DP</span><span><strong>Diego Peralta</strong><small>Cumpleaños · 10 pers.</small></span><b>1:47</b></div>
+                <div class="rg-fila"><span class="rg-av">VC</span><span><strong>Valeria Cruz</strong><small>Menú para celíacos</small></span><b>0:36</b></div>
+                <div class="rg-fila"><span class="rg-av rg-av--deriv">EM</span><span><strong>Emilio Ruiz</strong><small>Derivada al encargado</small></span><b>1:21</b></div>
+              </div>
+              </div>
+              <div class="ll-result"><small>Esta semana</small><strong>68 llamadas · 31 reservas</strong></div>
+            </div>
+
+            <!-- 3 · pedido para retirar -->
+            <div class="vista">
+              <div class="ll-cab">
+                <p class="ll-estado"><span class="punto"></span>Llamada en curso<span class="ll-crono">01:12</span></p>
+                <div class="ll-quien">
+                  <span class="ll-avatar">CF</span>
+                  <span><strong>Carlos Ferrer</strong><small>+54 9 298 456 8834</small></span>
+                </div>
+                <span class="chip">Atiende el agente</span>
+              </div>
+              <div class="ll-trans"><div class="ll-scroll">
+                <p><b>Cliente</b>Buenas, quería hacer un pedido para retirar.</p>
+                <p class="es-agente"><b>Agente</b>Dale. ¿Qué te preparo?</p>
+                <p><b>Cliente</b>Dos milanesas napolitanas con papas.</p>
+                <p class="es-agente"><b>Agente</b>Anotado. ¿Las papas rústicas o fritas?</p>
+                <p><b>Cliente</b>Rústicas.</p>
+                <p class="es-agente"><b>Agente</b>Son $ 29.600 y lo tenés listo en 25 minutos, a las 21:05.</p>
+                <p><b>Cliente</b>¿Y tienen estacionamiento?</p>
+                <p class="es-agente"><b>Agente</b>Sí, cochera propia sobre la calle lateral, sin cargo.</p>
+                <p><b>Cliente</b>¿Puedo pagar con tarjeta al retirar?</p>
+                <p class="es-agente"><b>Agente</b>Sí: débito, crédito o transferencia.</p>
+                <p><b>Cliente</b>Perfecto, ahí voy.</p>
+                <p class="es-agente"><b>Agente</b>Te espero, Carlos. Queda a nombre tuyo.</p>
+              </div></div>
+              <div class="ll-result"><small>Resultado</small><strong>Pedido tomado · retira 21:05</strong></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- escena 2 · MenuTag -->
+      <div class="escena-cel" data-e="1">
+        <div class="telefono telefono--solo">
+          <div class="pantalla pantalla--menu">
+            <div class="mn-header"><strong>Bodegón La Esquina</strong><small>MENÚ DIGITAL</small></div>
+            <div class="mn-chips"><span class="es-on">Entradas</span><span>Principales</span><span>Postres</span><span>Bebidas</span></div>
+            <div class="mn-lista"><div class="mn-scroll">
+              <p class="mn-sec">ENTRADAS</p>
+              <div class="mn-fila"><img src="img/comida-empanada.webp" alt="Empanadas de carne" loading="lazy"><span><strong>Empanadas de carne</strong><small>Fritas, cortadas a cuchillo</small></span><b>$ 8.400</b></div>
+              <div class="mn-fila"><img src="img/comida-provoleta.webp" alt="Provoleta clásica" loading="lazy"><span><strong>Provoleta clásica</strong><small>Con orégano y aceite de oliva</small></span><b>$ 7.900</b></div>
+              <p class="mn-sec">PRINCIPALES</p>
+              <div class="mn-fila"><img src="img/comida-bife.webp" alt="Ojo de bife" loading="lazy"><span><strong>Ojo de bife 400g</strong><small>Con papas rústicas y chimichurri</small></span><b>$ 19.500</b></div>
+              <div class="mn-fila"><img src="img/comida-milanesa.webp" alt="Milanesa napolitana" loading="lazy"><span><strong>Milanesa napolitana</strong><small>Con papas fritas y ensalada</small></span><b>$ 14.800</b></div>
+              <div class="mn-fila"><img src="img/comida-pizza.webp" alt="Pizza muzzarella" loading="lazy"><span><strong>Pizza muzzarella</strong><small>A la piedra, ocho porciones</small></span><b>$ 12.900</b></div>
+              <div class="mn-fila"><img src="img/comida-burger.webp" alt="Hamburguesa doble" loading="lazy"><span><strong>Hamburguesa doble</strong><small>Cheddar, panceta y cebolla</small></span><b>$ 13.400</b></div>
+              <div class="mn-fila"><img src="img/comida-lentejas.webp" alt="Guiso de lentejas" loading="lazy"><span><strong>Guiso de lentejas</strong><small>Receta de la casa</small></span><b>$ 11.200</b></div>
+              <p class="mn-sec">POSTRES</p>
+              <div class="mn-fila"><img src="img/comida-flan.webp" alt="Flan casero" loading="lazy"><span><strong>Flan casero</strong><small>Con dulce de leche y crema</small></span><b>$ 6.200</b></div>
+              <div class="mn-fila"><img src="img/comida-tiramisu.webp" alt="Tiramisú" loading="lazy"><span><strong>Tiramisú</strong><small>De la casa</small></span><b>$ 6.800</b></div>
+              <div class="mn-fila"><img src="img/comida-empanada.webp" alt="Empanadas de pollo" loading="lazy"><span><strong>Empanadas de pollo</strong><small>Al horno, media docena</small></span><b>$ 8.100</b></div>
+              <div class="mn-fila"><img src="img/comida-milanesa.webp" alt="Milanesa a caballo" loading="lazy"><span><strong>Milanesa a caballo</strong><small>Con dos huevos y puré</small></span><b>$ 15.600</b></div>
+              <p class="mn-sec">BEBIDAS</p>
+              <div class="mn-fila"><span class="mn-ico">V</span><span><strong>Malbec de la casa</strong><small>Copa o botella</small></span><b>$ 9.800</b></div>
+              <div class="mn-fila"><span class="mn-ico">C</span><span><strong>Cerveza artesanal</strong><small>Rubia, roja o negra · pinta</small></span><b>$ 5.400</b></div>
+              <div class="mn-fila"><span class="mn-ico">G</span><span><strong>Gaseosa línea Coca</strong><small>500 ml</small></span><b>$ 3.200</b></div>
+            </div>
+            </div>
+            <div class="mn-barra"><span>Llamar al mozo</span><span class="es-on">Hacer pedido</span><span>La cuenta</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- escena 3 · Combinado -->
+      <div class="escena-cel" data-e="2">
+        <div class="telefono telefono--atras telefono--menu-chico">
+          <div class="pantalla pantalla--menu">
+            <div class="mn-header"><strong>Bodegón La Esquina</strong><small>MENÚ DIGITAL</small></div>
+            <div class="mn-chips"><span class="es-on">Entradas</span><span>Principales</span><span>Postres</span></div>
+            <div class="mn-lista"><div class="mn-scroll">
+              <p class="mn-sec">ENTRADAS</p>
+              <div class="mn-fila"><img src="img/comida-empanada.webp" alt="Empanadas de carne" loading="lazy"><span><strong>Empanadas de carne</strong><small>Fritas, cortadas a cuchillo</small></span><b>$ 8.400</b></div>
+              <div class="mn-fila"><img src="img/comida-provoleta.webp" alt="Provoleta clásica" loading="lazy"><span><strong>Provoleta clásica</strong><small>Con orégano y aceite de oliva</small></span><b>$ 7.900</b></div>
+              <p class="mn-sec">PRINCIPALES</p>
+              <div class="mn-fila"><img src="img/comida-bife.webp" alt="Ojo de bife" loading="lazy"><span><strong>Ojo de bife 400g</strong><small>Con papas rústicas y chimichurri</small></span><b>$ 19.500</b></div>
+              <div class="mn-fila"><img src="img/comida-milanesa.webp" alt="Milanesa napolitana" loading="lazy"><span><strong>Milanesa napolitana</strong><small>Con papas fritas y ensalada</small></span><b>$ 14.800</b></div>
+              <div class="mn-fila"><img src="img/comida-pizza.webp" alt="Pizza muzzarella" loading="lazy"><span><strong>Pizza muzzarella</strong><small>A la piedra, ocho porciones</small></span><b>$ 12.900</b></div>
+              <div class="mn-fila"><img src="img/comida-burger.webp" alt="Hamburguesa doble" loading="lazy"><span><strong>Hamburguesa doble</strong><small>Cheddar, panceta y cebolla</small></span><b>$ 13.400</b></div>
+              <div class="mn-fila"><img src="img/comida-lentejas.webp" alt="Guiso de lentejas" loading="lazy"><span><strong>Guiso de lentejas</strong><small>Receta de la casa</small></span><b>$ 11.200</b></div>
+              <p class="mn-sec">POSTRES</p>
+              <div class="mn-fila"><img src="img/comida-flan.webp" alt="Flan casero" loading="lazy"><span><strong>Flan casero</strong><small>Con dulce de leche y crema</small></span><b>$ 6.200</b></div>
+              <div class="mn-fila"><img src="img/comida-tiramisu.webp" alt="Tiramisú" loading="lazy"><span><strong>Tiramisú</strong><small>De la casa</small></span><b>$ 6.800</b></div>
+              <div class="mn-fila"><img src="img/comida-empanada.webp" alt="Empanadas de pollo" loading="lazy"><span><strong>Empanadas de pollo</strong><small>Al horno, media docena</small></span><b>$ 8.100</b></div>
+              <div class="mn-fila"><img src="img/comida-milanesa.webp" alt="Milanesa a caballo" loading="lazy"><span><strong>Milanesa a caballo</strong><small>Con dos huevos y puré</small></span><b>$ 15.600</b></div>
+              <p class="mn-sec">BEBIDAS</p>
+              <div class="mn-fila"><span class="mn-ico">V</span><span><strong>Malbec de la casa</strong><small>Copa o botella</small></span><b>$ 9.800</b></div>
+              <div class="mn-fila"><span class="mn-ico">C</span><span><strong>Cerveza artesanal</strong><small>Rubia, roja o negra · pinta</small></span><b>$ 5.400</b></div>
+              <div class="mn-fila"><span class="mn-ico">G</span><span><strong>Gaseosa línea Coca</strong><small>500 ml</small></span><b>$ 3.200</b></div>
+            </div>
+            </div>
+            <div class="mn-barra"><span>Mozo</span><span class="es-on">Pedido</span><span>Cuenta</span></div>
+          </div>
+        </div>
+        <div class="telefono telefono--frente">
+          <div class="pantalla pantalla--llamada pantalla--dos">
+
+            <div class="vista">
+              <div class="ll-cab">
+                <p class="ll-estado"><span class="punto"></span>Llamada en curso<span class="ll-crono">01:12</span></p>
+                <div class="ll-quien">
+                  <span class="ll-avatar">CF</span>
+                  <span><strong>Carlos Ferrer</strong><small>+54 9 298 456 8834</small></span>
+                </div>
+                <span class="chip">Atiende el agente</span>
+              </div>
+              <div class="ll-trans"><div class="ll-scroll">
+                <p><b>Cliente</b>Buenas, quería hacer un pedido para retirar.</p>
+                <p class="es-agente"><b>Agente</b>Dale. ¿Qué te preparo?</p>
+                <p><b>Cliente</b>Dos milanesas napolitanas con papas.</p>
+                <p class="es-agente"><b>Agente</b>Anotado. ¿Las papas rústicas o fritas?</p>
+                <p><b>Cliente</b>Rústicas.</p>
+                <p class="es-agente"><b>Agente</b>Son $ 29.600 y lo tenés listo en 25 minutos, a las 21:05.</p>
+                <p><b>Cliente</b>¿Y tienen estacionamiento?</p>
+                <p class="es-agente"><b>Agente</b>Sí, cochera propia sobre la calle lateral, sin cargo.</p>
+                <p><b>Cliente</b>¿Puedo pagar con tarjeta al retirar?</p>
+                <p class="es-agente"><b>Agente</b>Sí: débito, crédito o transferencia.</p>
+                <p><b>Cliente</b>Perfecto, ahí voy.</p>
+                <p class="es-agente"><b>Agente</b>Te espero, Carlos. Queda a nombre tuyo.</p>
+              </div></div>
+              <div class="ll-result"><small>Resultado</small><strong>Pedido tomado · retira 21:05</strong></div>
+            </div>
+
+            <div class="vista">
+              <div class="rg-cab"><strong>Llamadas</strong><span class="rg-hoy">Hoy · 14 atendidas</span></div>
+              <div class="rg-lista"><div class="rg-scroll">
+                <div class="rg-fila"><span class="rg-av">CF</span><span><strong>Carlos Ferrer</strong><small>Pedido para retirar</small></span><b>1:12</b></div>
+                <div class="rg-fila"><span class="rg-av">MG</span><span><strong>Martina Gómez</strong><small>Reserva 4 pers. · 21:30</small></span><b>0:38</b></div>
+                <div class="rg-fila"><span class="rg-av">LP</span><span><strong>Lucía Paz</strong><small>Consulta sin TACC</small></span><b>0:41</b></div>
+                <div class="rg-fila"><span class="rg-av">RS</span><span><strong>Ramiro Sosa</strong><small>Horarios y pagos</small></span><b>0:29</b></div>
+                <div class="rg-fila"><span class="rg-av rg-av--deriv">NV</span><span><strong>Nicolás Vera</strong><small>Derivada al encargado</small></span><b>1:35</b></div>
+                <div class="rg-fila"><span class="rg-av">JT</span><span><strong>Julián Torres</strong><small>Reserva 2 pers. · 20:00</small></span><b>0:33</b></div>
+                <div class="rg-fila"><span class="rg-av">AB</span><span><strong>Ana Benítez</strong><small>Pedido con envío</small></span><b>1:04</b></div>
+                <div class="rg-fila"><span class="rg-av">DP</span><span><strong>Diego Peralta</strong><small>Cumpleaños · 10 pers.</small></span><b>1:47</b></div>
+                <div class="rg-fila"><span class="rg-av">VC</span><span><strong>Valeria Cruz</strong><small>Menú para celíacos</small></span><b>0:36</b></div>
+                <div class="rg-fila"><span class="rg-av rg-av--deriv">EM</span><span><strong>Emilio Ruiz</strong><small>Derivada al encargado</small></span><b>1:21</b></div>
+              </div>
+              </div>
+              <div class="ll-result"><small>Esta semana</small><strong>68 llamadas · 31 reservas</strong></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- textos por escena -->
+    <div class="hero__texto">
+      <!-- el h1 real de la página: los títulos que se ven son el nombre de cada plan -->
+      <h1 class="oculto-visual">RestHub-IA: agente de voz con IA y menú digital por tag NFC para restaurantes</h1>
+      <div class="escena-txt es-actual" data-e="0">
+        <p class="etiqueta">Plan 01</p>
+        <p class="h1">Agente de Voz</p>
+        <p class="bajada">Atiende las llamadas o el WhatsApp de tu restaurante, toma reservas y responde consultas sin que levantes el teléfono.</p>
+        <a class="boton boton--cian" href="#agente">Ver cómo funciona</a>
+      </div>
+      <div class="escena-txt" data-e="1">
+        <p class="etiqueta">Plan 02</p>
+        <p class="h1">MenuTag</p>
+        <p class="bajada">La carta vive en la mesa. El cliente apoya el celular en el tag y pide, llama al mozo o pide la cuenta desde ahí.</p>
+        <a class="boton boton--cian" href="#menutag">Ver cómo funciona</a>
+      </div>
+      <div class="escena-txt" data-e="2">
+        <p class="etiqueta">Plan 03 · El más elegido</p>
+        <p class="h1">Combinado</p>
+        <p class="bajada">Todo el Agente de Voz y todo el MenuTag. Un solo proveedor, un solo panel, y ahorrás USD 30 por mes.</p>
+        <a class="boton boton--cian" href="#combinado">Ver cómo funciona</a>
+      </div>
+    </div>
+
+    <!-- precio por escena -->
+    <div class="hero__precio">
+      <div class="escena-precio es-actual" data-e="0"><span>USD</span><b>250</b><span>/mes</span></div>
+      <div class="escena-precio" data-e="1"><span>USD</span><b>60</b><span>/mes</span></div>
+      <div class="escena-precio" data-e="2"><span>USD</span><b>280</b><span>/mes</span></div>
+      <p class="hero__nota">Facturación mensual · Todo incluido</p>
+    </div>
+
+  </div>
+
+  <!-- controles -->
+  <button class="flecha flecha--prev" type="button" aria-label="Plan anterior">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button class="flecha flecha--next" type="button" aria-label="Plan siguiente">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+
+  <div class="selector" role="tablist" aria-label="Elegir plan">
+    <button class="pastilla es-on" type="button" role="tab" aria-selected="true"  aria-label="Agente de Voz"></button>
+    <button class="pastilla"       type="button" role="tab" aria-selected="false" aria-label="MenuTag"></button>
+    <button class="pastilla"       type="button" role="tab" aria-selected="false" aria-label="Combinado"></button>
+    <span class="contador"><b>01</b> / 03</span>
+  </div>
+
+</section>
+
+<!-- ═══════════ CÓMO FUNCIONA · AGENTE DE VOZ ═══════════ -->
+<section class="seccion" id="agente">
+  <div class="contenedor">
+    <p class="eyebrow">Cómo funciona · Agente de Voz</p>
+    <h2>Atiende las llamadas al restaurante, aunque estés en plena mesa.</h2>
+    <p class="seccion__bajada">Elegís el canal: el teléfono de siempre o el WhatsApp. Contesta con tu carta, tus horarios y tus políticas — y vos ves cada conversación transcripta.</p>
+
+    <ol class="pasos">
+      <li class="paso">
+        <span class="paso__n">01</span>
+        <span class="chip">Tu número de siempre</span>
+        <h3>Entra la consulta</h3>
+        <p>Llaman al número del restaurante —o escriben al WhatsApp, según lo que elijas—. Atiende al primer tono, a cualquier hora, sin tono de espera ni «te devolvemos el llamado».</p>
+      </li>
+      <li class="paso">
+        <span class="paso__n">02</span>
+        <span class="chip">En segundos</span>
+        <h3>Responde como vos</h3>
+        <p>Contesta con tu carta, tus horarios y tus políticas: si hay opciones sin TACC, si aceptás mascotas, cuánto sale el menú del día. Con voz natural, no un menú de opciones.</p>
+      </li>
+      <li class="paso">
+        <span class="paso__n">03</span>
+        <span class="chip">Sin intervención</span>
+        <h3>Resuelve o deriva</h3>
+        <p>Si es una reserva, la toma y la carga en la agenda mirando la disponibilidad real de mesas. Si hace falta una persona, te pasa la llamada con el resumen de lo hablado.</p>
+      </li>
+      <li class="paso">
+        <span class="paso__n">04</span>
+        <span class="chip">En tu panel</span>
+        <h3>Vos ves todo</h3>
+        <p>Cada llamada queda transcripta y cada chat registrado. Con métricas de cuántas consultas entraron, cuántas terminaron en reserva y a qué hora se concentran.</p>
+      </li>
+    </ol>
+
+    <div class="tira">
+      <div><h4>Un número, un canal</h4><p>El agente atiende tu línea de siempre. Ese número queda para llamadas: si además querés el WhatsApp automatizado, hace falta un segundo número.</p></div>
+      <div><h4>No inventa respuestas</h4><p>Cuando no sabe algo pasa la consulta a una persona, en vez de improvisar. Hosting, mantenimiento y soporte van en el abono.</p></div>
+      <div><h4>Podés tomar vos</h4><p>Si querés atender en persona, tomás la llamada o el chat desde el panel y el agente se corre.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CÓMO FUNCIONA · MENUTAG ═══════════ -->
+<section class="seccion seccion--alt" id="menutag">
+  <div class="contenedor">
+    <p class="eyebrow">Cómo funciona · MenuTag</p>
+    <h2>El cliente apoya el celular en la mesa y ya está pidiendo.</h2>
+    <p class="seccion__bajada">La carta vive en la mesa. Se abre sin instalar nada, el pedido te llega por WhatsApp, y los precios los cambiás sin reimprimir un solo menú.</p>
+
+    <ol class="pasos">
+      <li class="paso">
+        <span class="paso__n">01</span>
+        <span class="chip">NFC o QR</span>
+        <h3>Toca la mesa</h3>
+        <p>Apoya el celular sobre el tag de la mesa y se abre la carta. Sin instalar nada y sin apuntar a un cartelito. Si el teléfono no tiene NFC, queda el QR de respaldo.</p>
+      </li>
+      <li class="paso">
+        <span class="paso__n">02</span>
+        <span class="chip">En su idioma</span>
+        <h3>Ve la carta entera</h3>
+        <p>Fotos de los platos, descripción y precio actualizado. En su idioma y en su moneda, con la cotización del día — sin imprimir una carta distinta por idioma.</p>
+      </li>
+      <li class="paso">
+        <span class="paso__n">03</span>
+        <span class="chip">Por WhatsApp</span>
+        <h3>Pide desde ahí</h3>
+        <p>En la misma pantalla llama al mozo, hace el pedido o pide la cuenta. Te llega por WhatsApp con el número de mesa, así sabés a quién estás atendiendo.</p>
+      </li>
+      <li class="paso">
+        <span class="paso__n">04</span>
+        <span class="chip">En tu panel</span>
+        <h3>Vos ves qué pasó</h3>
+        <p>Escaneos por mesa y por horario, los platos más vistos y los cupones usados. Sirve tanto para saber qué reforzar como qué conviene sacar de la carta.</p>
+      </li>
+    </ol>
+
+    <div class="tira">
+      <div><h4>La carta la cambiás vos</h4><p>Subís un precio o marcás un plato sin stock desde el panel y cambia al instante en todas las mesas.</p></div>
+      <div><h4>Para que vuelvan</h4><p>Cupones, promociones y reseñas con recompensa, atadas al mismo tag que ya tienen en la mano.</p></div>
+      <div><h4>En marcha en 3 semanas</h4><p>Cargamos la carta con fotos, configuramos idiomas y monedas, y dejamos los tags listos en las mesas.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ COMBINADO ═══════════ -->
+<section class="seccion" id="combinado">
+  <div class="contenedor">
+    <p class="eyebrow">Cómo funciona · Plan Combinado</p>
+    <h2>Los dos frentes cubiertos: el que llama y el que ya está sentado.</h2>
+    <p class="seccion__bajada">El Agente de Voz atiende a quien todavía no llegó. MenuTag atiende a quien ya se sentó, avisando a los celulares del personal. Dos canales que no se pisan, un solo panel.</p>
+
+    <div class="bloques">
+      <div class="bloque">
+        <p class="bloque__rol">Atiende a quien todavía no llegó</p>
+        <h3>Agente de Voz</h3>
+        <ul>
+          <li>Atiende el canal que elijas —llamadas o WhatsApp— al primer tono, a cualquier hora</li>
+          <li>Toma reservas y las carga en la agenda según la disponibilidad real</li>
+          <li>Deriva a una persona cuando hace falta, con la conversación resumida</li>
+          <li>Historial y métricas de cuántas consultas terminan en reserva</li>
+        </ul>
+      </div>
+      <div class="bloque">
+        <p class="bloque__rol">Atiende a quien ya se sentó</p>
+        <h3>MenuTag</h3>
+        <ul>
+          <li>La carta se abre tocando el tag NFC de la mesa, con QR de respaldo</li>
+          <li>Multi-idioma y multi-moneda, con la cotización del día</li>
+          <li>Llamar al mozo, pedir y pedir la cuenta desde la misma pantalla</li>
+          <li>Escaneos por mesa y horario, platos más vistos y cupones usados</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tira">
+      <div><h4>Un solo panel</h4><p>Las conversaciones del agente y lo que pasa en las mesas, en el mismo lugar. No hay que cruzar dos sistemas a mano.</p></div>
+      <div><h4>Un solo proveedor</h4><p>Un contacto para soporte, una factura y una sola puesta en marcha. Las tres semanas son las mismas para los dos.</p></div>
+      <div><h4>USD 30 menos por mes</h4><p>Por separado son USD 310 al mes. Combinados, USD 280 — el ahorro es de USD 360 al año.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PRECIOS ═══════════ -->
+<section class="seccion seccion--alt" id="precios">
+  <div class="contenedor">
+    <p class="eyebrow">Planes &amp; precios · 2026</p>
+    <h2 class="centrado">Elegí el plan ideal para tu restaurante — o combinalos y ahorrá.</h2>
+
+    <div class="planes">
+
+      <article class="plan">
+        <p class="plan__eyebrow">Plan 02</p>
+        <h3>MenuTag</h3>
+        <p class="plan__precio"><span>USD</span><b>60</b><span>/mes</span></p>
+        <p class="plan__nota">Facturación mensual · Todo incluido</p>
+        <hr>
+        <ul class="checks">
+          <li>Menú digital vía tag NFC (tocás la mesa) + QR de respaldo</li>
+          <li>Multi-idioma y multi-moneda con cotización actualizada</li>
+          <li>Mesa inteligente para llamar al mozo o pedir la cuenta por WhatsApp</li>
+          <li>Cupones, promociones y reseñas con recompensa</li>
+          <li>Dashboard de analytics de escaneos y uso</li>
+        </ul>
+        <a class="boton boton--cian plan__cta" href="https://wa.me/5492984904013?text=Hola!%20Me%20interesa%20el%20plan%20MenuTag" target="_blank" rel="noopener">Elegir plan</a>
+      </article>
+
+      <article class="plan">
+        <p class="plan__eyebrow">Plan 01</p>
+        <h3>Agente de Voz</h3>
+        <p class="plan__precio"><span>USD</span><b>250</b><span>/mes</span></p>
+        <p class="plan__nota">Facturación mensual · Todo incluido</p>
+        <hr>
+        <ul class="checks">
+          <li>Asistente con IA que atiende el canal que elijas: llamadas o WhatsApp</li>
+          <li>Gestión automática de reservas, agenda y disponibilidad</li>
+          <li>Panel de gestión con historial, derivaciones y métricas</li>
+          <li>Hosting, mantenimiento y soporte incluidos</li>
+          <li>Puesta en marcha en 3 semanas con onboarding incluido</li>
+        </ul>
+        <a class="boton boton--cian plan__cta" href="https://wa.me/5492984904013?text=Hola!%20Me%20interesa%20el%20plan%20Agente%20de%20Voz" target="_blank" rel="noopener">Elegir plan</a>
+      </article>
+
+      <article class="plan plan--destacado">
+        <span class="badge">★ El más elegido</span>
+        <p class="plan__eyebrow">Plan combinado</p>
+        <h3>Combinado</h3>
+        <p class="plan__precio"><span>USD</span><b>280</b><span>/mes</span></p>
+        <p class="plan__nota">Facturación mensual · Todo incluido</p>
+        <p class="pastilla-ahorro">Ahorrás USD 30 / mes</p>
+        <hr>
+        <ul class="checks">
+          <li>Todo el Agente de Voz</li>
+          <li>Todo el MenuTag</li>
+          <li>Ahorro de USD 30/mes frente a contratar ambos por separado</li>
+          <li>Un solo proveedor y un solo panel de soporte</li>
+        </ul>
+        <a class="boton boton--cian plan__cta" href="https://wa.me/5492984904013?text=Hola!%20Me%20interesa%20el%20plan%20Combinado" target="_blank" rel="noopener">Elegir combinado</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACTO ═══════════ -->
+<section class="cierre" id="contacto">
+  <div class="contenedor centrado">
+    <h2>Agendá una demo sin cargo</h2>
+    <p class="seccion__bajada">Sin costo y sin compromiso — te mostramos cómo funciona en tu restaurante.</p>
+    <a class="boton boton--cian boton--grande" href="https://wa.me/5492984904013?text=Hola!%20Quiero%20agendar%20una%20demo%20de%20RestHub-IA" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
+    <p class="cierre__tel">o llamanos al <a href="tel:+5492984904013">+54 9 2984 90 4013</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="pie">
+  <div class="contenedor pie__caja">
+    <p><strong>RestHub-IA</strong> · IA para gastronomía</p>
+    <p><a href="https://wa.me/5492984904013" target="_blank" rel="noopener">WhatsApp +54 9 2984 90 4013</a></p>
+    <p class="pie__copy">© 2026 RestHub-IA</p>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "RestHub-IA",
+  "url": "https://resthub.cloud/",
+  "description": "Agente de voz con IA y menú digital por tag NFC para restaurantes.",
+  "areaServed": "AR",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+54-9-2984-90-4013",
+    "contactType": "sales",
+    "availableLanguage": ["Spanish"]
+  },
+  "makesOffer": [
+    { "@type": "Offer", "name": "MenuTag", "price": "60", "priceCurrency": "USD",
+      "description": "Menú digital por tag NFC y QR, multi-idioma, con llamada al mozo y pedido desde la mesa." },
+    { "@type": "Offer", "name": "Agente de Voz", "price": "250", "priceCurrency": "USD",
+      "description": "Asistente con IA que atiende las llamadas o el WhatsApp del restaurante y gestiona reservas." },
+    { "@type": "Offer", "name": "Combinado", "price": "280", "priceCurrency": "USD",
+      "description": "Agente de Voz y MenuTag juntos, con un solo panel y un solo proveedor." }
+  ]
+}
+</script>
+
+<script src="guion.js" defer></script>
+</body>
+</html>

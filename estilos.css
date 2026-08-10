@@ -1,0 +1,496 @@
+/* ══════════ RestHub-IA · estilos ══════════
+   Paleta muestreada del PDF de marca. No cambiar a ojo. */
+
+:root{
+  --fondo:#05080F;
+  --fondo-alt:#070C16;
+  --card-a:#0E192B;
+  --card-b:#091020;
+  --card-dest-a:#112234;
+  --card-dest-b:#091926;
+  --borde:#1B2E42;
+  --cian:#2FD4EE;
+  --cian-boton:#40DBF0;
+  --chrome:#0B1418;
+  --llamada:#0D1822;
+  --wa-verde:#075E54;
+  --wa-burb:#DCF8C6;
+
+  --ancho:1240px;
+  --curva:cubic-bezier(.4,0,.2,1);
+  --entrada:cubic-bezier(.16,1,.3,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{
+  margin:0;background:var(--fondo);color:#fff;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3,h4{margin:0;letter-spacing:-.02em;line-height:1.08}
+p{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+
+.contenedor{width:min(100% - 40px,var(--ancho));margin-inline:auto}
+/* visible para buscadores y lectores de pantalla, no para el ojo */
+.oculto-visual{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.centrado{text-align:center}
+
+.saltar{position:absolute;left:-9999px;top:0;background:var(--cian);color:#05080F;padding:10px 16px;z-index:100}
+.saltar:focus{left:12px;top:12px}
+
+:focus-visible{outline:2px solid var(--cian);outline-offset:3px;border-radius:6px}
+
+/* ── botones ── */
+.boton{
+  display:inline-block;padding:13px 26px;border-radius:26px;
+  font-size:13px;font-weight:600;text-decoration:none;letter-spacing:.02em;
+  transition:transform .18s var(--curva),filter .18s var(--curva);
+}
+.boton--cian{background:var(--cian-boton);color:#05080F}
+.boton--cian:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.boton--grande{padding:16px 34px;font-size:14px;letter-spacing:.04em}
+
+/* ── nav ── */
+.nav{position:fixed;inset:0 0 auto;z-index:50;padding:16px 0;transition:background .3s,backdrop-filter .3s,padding .3s}
+.nav.es-pegado{background:rgba(5,8,15,.82);backdrop-filter:blur(14px);padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.nav__caja{display:flex;align-items:center;gap:24px}
+.marca{display:flex;align-items:center;gap:11px;text-decoration:none;margin-right:auto}
+.marca__badge{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--cian);flex:none}
+.marca__texto strong{display:block;font-size:15px;font-weight:700;letter-spacing:-.01em}
+.marca__texto small{display:block;font-size:8.5px;letter-spacing:.14em;opacity:.7;text-transform:uppercase;margin-top:1px}
+.nav__links{display:flex;gap:22px}
+.nav__links a{font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;opacity:.8;text-decoration:none;transition:opacity .2s,color .2s}
+.nav__links a:hover{opacity:1;color:var(--cian)}
+.nav__cta{padding:11px 20px;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase}
+
+/* ══════════ PORTADA ══════════ */
+.hero{position:relative;min-height:min(900px,100svh);display:flex;align-items:center;padding:118px 0 88px;overflow:hidden}
+.hero__fondo{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(1000px 620px at 68% 40%,rgba(47,212,238,.11),transparent 62%),
+    radial-gradient(700px 500px at 6% 82%,rgba(47,212,238,.05),transparent 60%);
+}
+/* dos columnas: a la izquierda lo que hay que leer, a la derecha los celulares */
+.hero__caja{
+  position:relative;z-index:2;width:min(100% - 40px,var(--ancho));
+  display:grid;grid-template-columns:minmax(300px,390px) 1fr;
+  grid-template-rows:auto auto;align-items:center;column-gap:48px;row-gap:26px;
+}
+
+/* títulos gigantes: corridos a la derecha para no pisar el texto */
+.titulones{position:absolute;inset:0;z-index:0;pointer-events:none;display:grid;overflow:hidden}
+.tituloni{
+  grid-area:1/1;align-self:center;justify-self:start;
+  margin-left:23vw;
+  font-size:clamp(52px,7.4vw,116px);font-weight:900;letter-spacing:-.045em;
+  white-space:nowrap;color:#fff;opacity:0;transform:scale(.97);
+  transition:opacity .8s var(--curva),transform .8s var(--curva);
+  /* el borde izquierdo se desvanece: si no, arranca de golpe atrás del texto */
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 82%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 14%,#000 82%,transparent);
+}
+.tituloni.es-actual{opacity:1;transform:scale(1)}
+
+/* fotos flotando: todas fuera de la columna de texto */
+.flotantes{position:absolute;inset:0;z-index:1;pointer-events:none}
+.flota{position:absolute;filter:drop-shadow(0 18px 34px rgba(0,0,0,.55));animation:flotar 7s ease-in-out infinite}
+.flota--a{width:17%;top:3%;left:24%;animation-delay:0s}
+.flota--b{width:18%;top:-1%;right:3%;animation-delay:-1.4s}
+.flota--c{width:15%;bottom:6%;left:20%;animation-delay:-2.8s}
+.flota--d{width:17%;bottom:2%;right:1%;animation-delay:-4.2s}
+.flota--e{width:10%;top:46%;right:2%;animation-delay:-5.6s}
+@keyframes flotar{
+  0%,100%{transform:translateY(0) rotate(0)}
+  50%{transform:translateY(-16px) rotate(2deg)}
+}
+
+/* celulares */
+.celulares{
+  position:relative;z-index:2;grid-column:2;grid-row:1 / span 2;
+  height:620px;display:grid;place-items:center;
+}
+.escena-cel{
+  grid-area:1/1;position:relative;width:470px;height:600px;
+  transform:translateX(-130%);opacity:0;
+  transition:transform 1s var(--curva),opacity 1s var(--curva);
+}
+.escena-cel.es-actual{transform:translateX(0);opacity:1}
+.escena-cel.es-anterior{transform:translateX(130%);opacity:0}
+
+/* chrome del teléfono */
+.telefono{
+  position:absolute;width:278px;height:566px;border-radius:38px;
+  background:var(--chrome);border:1px solid #2D3E45;padding:9px;
+  box-shadow:0 26px 52px rgba(0,0,0,.55);
+}
+.telefono::before{
+  content:"";position:absolute;top:16px;left:50%;transform:translateX(-50%);
+  width:72px;height:18px;border-radius:11px;background:#000;z-index:3;
+}
+.telefono--frente{left:0;top:14px;transform:rotate(-5deg);z-index:2}
+.telefono--atras{right:0;top:22px;transform:rotate(9deg) scale(.86);transform-origin:top right;z-index:1;opacity:.97}
+.telefono--solo{left:50%;top:14px;transform:translateX(-50%) rotate(-3deg);z-index:2}
+.pantalla{position:relative;width:100%;height:100%;border-radius:30px;overflow:hidden;background:#fff}
+
+/* ══════════ LO QUE PASA DENTRO DEL CELULAR ══════════
+   Las pantallas se turnan y el contenido se desplaza solo. Todo con
+   animaciones CSS: sin JavaScript, y se apaga con prefers-reduced-motion. */
+
+/* pantalla · llamada */
+.pantalla--llamada{background:var(--llamada)}
+
+/* ── las vistas se turnan ──
+   Cada vista ocupa la pantalla entera y entra por la derecha cuando le toca.
+   Las animaciones cuelgan de .es-actual: arrancan de cero cada vez que el plan
+   entra en pantalla, así siempre se ve la historia desde el principio.
+   Todo late en un compás de 12s, el mismo del carrusel. */
+.pantalla .vista{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  opacity:0;transform:translateX(102%);
+}
+.pantalla .vista:first-child{opacity:1;transform:none}
+
+.escena-cel.es-actual .pantalla .vista{
+  animation:turnarVista 12s var(--curva) infinite;
+}
+.escena-cel.es-actual .pantalla .vista:nth-child(2){animation-delay:4s}
+.escena-cel.es-actual .pantalla .vista:nth-child(3){animation-delay:8s}
+
+/* tres vistas: cada una entra, se queda 3s y sale */
+@keyframes turnarVista{
+  0%           {transform:translateX(102%);opacity:0}
+  4%           {transform:translateX(0);opacity:1}
+  29%          {transform:translateX(0);opacity:1}
+  33.4%,100%   {transform:translateX(-102%);opacity:0}
+}
+
+/* dos vistas: cada una se queda el doble */
+.escena-cel.es-actual .pantalla--dos .vista{animation-name:turnarVistaDos}
+.escena-cel.es-actual .pantalla--dos .vista:nth-child(2){animation-delay:6s}
+@keyframes turnarVistaDos{
+  0%           {transform:translateX(102%);opacity:0}
+  4%           {transform:translateX(0);opacity:1}
+  46%          {transform:translateX(0);opacity:1}
+  50%,100%     {transform:translateX(-102%);opacity:0}
+}
+
+/* ── el contenido de cada vista se desplaza solo ──
+   Transcripción, chat y registro usan el mismo motor: bajan por tramos, con
+   pausas para que se alcance a leer, y vuelven arriba recién cuando la vista
+   ya salió de pantalla. Así nunca se ve el rebobinado.
+   El recorrido no se puede fijar acá: depende del alto de la ventana del
+   celular (que cambia con la pantalla) y del largo del contenido (que cambia
+   si mañana se agregan platos o líneas). Lo mide guion.js → --recorrido. */
+.escena-cel.es-actual :is(.ll-scroll,.rg-scroll,.wa-scroll){
+  animation:leerContenido 12s ease-in-out infinite;
+}
+.escena-cel.es-actual .vista:nth-child(2) :is(.ll-scroll,.rg-scroll,.wa-scroll){animation-delay:4s}
+.escena-cel.es-actual .vista:nth-child(3) :is(.ll-scroll,.rg-scroll,.wa-scroll){animation-delay:8s}
+.escena-cel.es-actual .pantalla--dos :is(.ll-scroll,.rg-scroll,.wa-scroll){animation-name:leerContenidoDos}
+.escena-cel.es-actual .pantalla--dos .vista:nth-child(2) :is(.ll-scroll,.rg-scroll,.wa-scroll){animation-delay:6s}
+
+@keyframes leerContenido{            /* acompaña a turnarVista */
+  0%,5%      {transform:translateY(0)}
+  15%,19%    {transform:translateY(calc(var(--recorrido,0px) * -0.5))}
+  28%,33%    {transform:translateY(calc(var(--recorrido,0px) * -1))}
+  41%,100%   {transform:translateY(0)}   /* vuelve con la vista ya afuera */
+}
+@keyframes leerContenidoDos{         /* acompaña a turnarVistaDos */
+  0%,5%      {transform:translateY(0)}
+  20%,26%    {transform:translateY(calc(var(--recorrido,0px) * -0.5))}
+  40%,46%    {transform:translateY(calc(var(--recorrido,0px) * -1))}
+  57%,100%   {transform:translateY(0)}
+}
+
+/* cabecera, transcripción y resultado de la llamada */
+.ll-cab{padding:38px 17px 13px;border-bottom:1px solid rgba(255,255,255,.09);flex:none}
+.ll-estado{display:flex;align-items:center;gap:6px;font-size:8px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--cian);white-space:nowrap}
+.ll-estado .punto{width:5px;height:5px;border-radius:50%;background:var(--cian);animation:latir 1.8s ease-in-out infinite}
+@keyframes latir{0%,100%{opacity:1}50%{opacity:.25}}
+.ll-crono{margin-left:auto;color:rgba(255,255,255,.5);letter-spacing:.04em}
+.ll-quien{display:flex;align-items:center;gap:10px;margin-top:12px}
+.ll-avatar{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;flex:none;
+  background:rgba(47,212,238,.16);border:1px solid rgba(47,212,238,.5);color:var(--cian);font-size:12px;font-weight:700}
+.ll-quien strong{display:block;font-size:13.5px;font-weight:700;letter-spacing:-.01em}
+.ll-quien small{display:block;font-size:9.5px;color:rgba(255,255,255,.45);margin-top:1px}
+.chip{display:inline-block;margin-top:9px;padding:4px 10px;border-radius:11px;
+  background:rgba(47,212,238,.12);border:1px solid rgba(47,212,238,.45);
+  font-size:7.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--cian)}
+
+/* min-height:0 es imprescindible: sin eso un hijo flex no se achica por
+   debajo de su contenido y la transcripción desborda el celular en vez de recortarse */
+.ll-trans{
+  flex:1;min-height:0;overflow:hidden;padding:12px 17px;position:relative;
+  -webkit-mask-image:linear-gradient(180deg,#000 78%,transparent);
+  mask-image:linear-gradient(180deg,#000 78%,transparent);
+}
+.ll-trans p{margin-bottom:11px;font-size:10.5px;line-height:1.5;color:rgba(255,255,255,.68)}
+.ll-trans p.es-agente{color:rgba(255,255,255,.92);font-weight:500}
+.ll-trans b{display:block;font-size:7px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;
+  color:rgba(255,255,255,.4);margin-bottom:3px}
+.ll-trans p.es-agente b{color:var(--cian)}
+.ll-result{flex:none;padding:11px 17px 15px;background:rgba(255,255,255,.04);border-top:1px solid rgba(255,255,255,.09)}
+.ll-result small{display:block;font-size:7px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.ll-result strong{display:block;font-size:10.5px;font-weight:600;color:var(--cian);margin-top:3px}
+
+/* registro de llamadas: lo que ve el restaurante en su panel */
+.rg-cab{flex:none;padding:38px 17px 12px;border-bottom:1px solid rgba(255,255,255,.09)}
+.rg-cab strong{display:block;font-size:16px;font-weight:700;letter-spacing:-.01em}
+.rg-hoy{display:block;font-size:9px;color:var(--cian);margin-top:3px;letter-spacing:.05em}
+.rg-lista{flex:1;min-height:0;overflow:hidden;padding:4px 12px}
+.rg-fila{display:flex;align-items:center;gap:9px;padding:9px 5px;border-bottom:1px solid rgba(255,255,255,.06)}
+.rg-av{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;flex:none;
+  background:rgba(47,212,238,.14);color:var(--cian);font-size:9px;font-weight:700}
+.rg-av--deriv{background:rgba(255,255,255,.1);color:rgba(255,255,255,.6)}
+.rg-fila span:nth-child(2){flex:1;min-width:0}
+.rg-fila strong{display:block;font-size:10.5px;font-weight:600}
+.rg-fila small{display:block;font-size:8.5px;color:rgba(255,255,255,.45);margin-top:1px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rg-fila b{font-size:9px;font-weight:600;color:rgba(255,255,255,.4);flex:none}
+
+/* pantalla · whatsapp */
+/* el chat va llegando solo y después se pasa a otra conversación */
+.pantalla--wa{background:#ECE5DD}
+.wa-header{flex:none;display:flex;align-items:center;gap:8px;padding:34px 13px 10px;background:var(--wa-verde)}
+.wa-avatar{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.25);font-size:9.5px;font-weight:700}
+.wa-nombre{font-size:11.5px;font-weight:600}
+.wa-chat{flex:1;min-height:0;padding:10px;overflow:hidden}
+.burb{max-width:82%;padding:6px 9px;border-radius:8px;font-size:9.5px;line-height:1.4;color:#111;margin-bottom:7px;box-shadow:0 1px 1px rgba(0,0,0,.12)}
+.burb--in{background:#fff;border-top-left-radius:2px}
+.burb--out{background:var(--wa-burb);border-top-right-radius:2px;margin-left:auto}
+
+/* pantalla · menú */
+.pantalla--menu{background:#fff;color:#05282F;display:flex;flex-direction:column}
+.mn-header{flex:none;padding:34px 13px 9px;background:#0B3D3A;color:#fff}
+.mn-header strong{display:block;font-size:12px;font-weight:700}
+.mn-header small{display:block;font-size:6.5px;letter-spacing:.16em;opacity:.65;margin-top:2px}
+.mn-chips{flex:none;display:flex;gap:5px;padding:8px 10px;border-bottom:1px solid #E8ECEE;overflow:hidden}
+.mn-chips span{padding:3.5px 9px;border-radius:11px;background:#F1F4F6;font-size:7.5px;font-weight:600;white-space:nowrap;color:#5B6B72}
+.mn-chips .es-on{background:#0B3D3A;color:#fff}
+.mn-lista{flex:1;min-height:0;overflow:hidden;padding:0 10px}
+/* la carta se recorre sola, con pausas para que se alcance a leer cada plato */
+.escena-cel.es-actual .mn-scroll{animation:recorrerCarta 12s ease-in-out infinite}
+@keyframes recorrerCarta{
+  0%,7%     {transform:translateY(0)}
+  24%,32%   {transform:translateY(calc(var(--recorrido,0px) * -0.5))}
+  48%,56%   {transform:translateY(calc(var(--recorrido,0px) * -1))}
+  74%,100%  {transform:translateY(0)}
+}
+.mn-sec{font-size:6.5px;font-weight:700;letter-spacing:.14em;color:#9AA7AD;margin:9px 0 5px}
+.mn-fila{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #F0F3F4}
+.mn-fila img{width:34px;height:34px;object-fit:cover;border-radius:7px;flex:none;background:#F1F4F6}
+/* las bebidas no llevan foto: van con una inicial, como en muchas cartas */
+.mn-fila .mn-ico{display:grid;place-items:center;width:34px;height:34px;border-radius:7px;flex:none;
+  background:#EEF2F3;color:#0B3D3A;font-size:11px;font-weight:700}
+.mn-fila span{flex:1;min-width:0}
+.mn-fila strong{display:block;font-size:9px;font-weight:600}
+.mn-fila small{display:block;font-size:7px;color:#8A979D;margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mn-fila b{font-size:8.5px;font-weight:700;color:#0B3D3A;flex:none}
+.mn-barra{flex:none;display:flex;gap:5px;padding:9px 10px 13px;border-top:1px solid #E8ECEE}
+.mn-barra span{flex:1;text-align:center;padding:7px 3px;border-radius:9px;border:1px solid #DCE3E6;font-size:7.5px;font-weight:600;color:#5B6B72}
+.mn-barra .es-on{background:#052831;border-color:#052831;color:#fff}
+.telefono--menu-chico .mn-fila img,
+.telefono--menu-chico .mn-fila .mn-ico{width:30px;height:30px;font-size:10px}
+
+/* textos de la portada */
+.hero__texto{grid-column:1;grid-row:1;position:relative;z-index:3;display:grid;align-self:end}
+.escena-txt{grid-area:1/1;opacity:0;transform:translateY(10px);transition:opacity .7s var(--curva),transform .7s var(--curva);pointer-events:none}
+.escena-txt.es-actual{opacity:1;transform:none;pointer-events:auto}
+.etiqueta{font-size:10px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.hero__texto h1,.hero__texto .h1{font-size:clamp(34px,3.6vw,46px);font-weight:900;margin:9px 0 13px}
+.bajada{font-size:14.5px;line-height:1.62;color:rgba(255,255,255,.72);margin-bottom:22px}
+
+.hero__precio{grid-column:1;grid-row:2;position:relative;z-index:3;display:grid;align-self:start}
+.escena-precio{grid-area:1/1;display:flex;align-items:baseline;gap:7px;opacity:0;transition:opacity .7s var(--curva)}
+.escena-precio.es-actual{opacity:1}
+.escena-precio span{font-size:16px;font-weight:600;color:rgba(255,255,255,.66)}
+.escena-precio b{font-size:clamp(52px,5.6vw,68px);font-weight:900;letter-spacing:-.03em;line-height:1}
+.hero__nota{grid-area:2/1;font-size:11px;color:rgba(255,255,255,.5);margin-top:8px}
+
+/* controles */
+.flecha{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:5;
+  width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;
+  background:rgba(255,255,255,.16);color:#fff;display:grid;place-items:center;
+  transition:background .2s,transform .2s;backdrop-filter:blur(6px);
+}
+.flecha:hover{background:rgba(47,212,238,.3)}
+.flecha--prev{left:26px}
+.flecha--next{right:26px}
+.selector{position:absolute;left:50%;bottom:32px;transform:translateX(-50%);z-index:5;display:flex;align-items:center;gap:7px}
+.pastilla{width:22px;height:4px;border-radius:2px;border:0;cursor:pointer;background:rgba(255,255,255,.25);padding:0;transition:background .3s,width .3s}
+.pastilla.es-on{background:var(--cian);width:34px}
+.contador{margin-left:11px;font-size:10.5px;font-weight:600;color:rgba(255,255,255,.6)}
+
+/* ══════════ SECCIONES ══════════ */
+.seccion{padding:104px 0}
+.seccion--alt{background:var(--fondo-alt)}
+.eyebrow{font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--cian);margin-bottom:15px}
+.seccion h2{font-size:clamp(29px,3.6vw,45px);font-weight:900;max-width:19ch;line-height:1.09}
+.seccion h2.centrado{max-width:none;text-align:center;margin-inline:auto}
+.seccion__bajada{font-size:16px;line-height:1.65;color:rgba(255,255,255,.66);max-width:66ch;margin-top:17px}
+.centrado .seccion__bajada{margin-inline:auto}
+
+.pasos{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:52px}
+.paso{
+  padding:26px;border-radius:24px;border:1px solid var(--borde);
+  background:linear-gradient(180deg,var(--card-a),var(--card-b));
+}
+.paso__n{display:block;font-size:34px;font-weight:900;letter-spacing:-.03em;color:var(--cian);line-height:1}
+.paso .chip{margin:14px 0 0}
+.paso h3{font-size:19px;font-weight:900;margin:13px 0 9px}
+.paso p{font-size:13px;line-height:1.62;color:rgba(255,255,255,.8)}
+
+.tira{display:grid;grid-template-columns:repeat(3,1fr);gap:38px;margin-top:56px;padding-top:38px;border-top:1px solid rgba(255,255,255,.12)}
+.tira h4{font-size:15px;font-weight:600;margin-bottom:8px;padding-left:17px;position:relative}
+.tira h4::before{content:"";position:absolute;left:0;top:7px;width:7px;height:7px;border-radius:50%;background:var(--cian)}
+.tira p{font-size:13.5px;line-height:1.6;color:rgba(255,255,255,.66);padding-left:17px}
+
+.bloques{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:52px}
+.bloque{padding:30px;border-radius:24px;border:1px solid var(--borde);background:linear-gradient(180deg,var(--card-a),var(--card-b))}
+.bloque__rol{font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--cian)}
+.bloque h3{font-size:26px;font-weight:900;margin:6px 0 18px}
+.bloque li{position:relative;padding-left:18px;margin-bottom:11px;font-size:13.5px;line-height:1.6;color:rgba(255,255,255,.8)}
+.bloque li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--cian)}
+
+/* planes */
+.planes{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:56px;align-items:start}
+.plan{
+  position:relative;display:flex;flex-direction:column;padding:32px;border-radius:24px;
+  border:1px solid var(--borde);background:linear-gradient(180deg,var(--card-a),var(--card-b));height:100%;
+}
+.plan--destacado{
+  background:linear-gradient(180deg,var(--card-dest-a),var(--card-dest-b));
+  border:1.5px solid rgba(47,212,238,.55);
+  box-shadow:0 0 34px 2px rgba(47,212,238,.28);
+}
+.badge{
+  position:absolute;top:-15px;left:50%;transform:translateX(-50%);white-space:nowrap;
+  padding:8px 17px;border-radius:18px;background:var(--card-dest-b);
+  border:1px solid rgba(47,212,238,.7);color:var(--cian);
+  font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+}
+.plan__eyebrow{font-size:11px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.plan h3{font-size:26px;font-weight:900;margin:6px 0 16px}
+.plan__precio{display:flex;align-items:baseline;gap:6px}
+.plan__precio span{font-size:15px;font-weight:600;color:rgba(255,255,255,.66)}
+.plan__precio b{font-size:42px;font-weight:900;letter-spacing:-.03em;line-height:1}
+.plan__nota{font-size:11.5px;font-weight:600;color:rgba(255,255,255,.55);margin-top:6px}
+.pastilla-ahorro{
+  display:inline-block;margin-top:12px;padding:6px 14px;border-radius:15px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(47,212,238,.55);
+  font-size:11.5px;font-weight:600;
+}
+.plan hr{border:0;border-top:1px solid rgba(255,255,255,.13);margin:18px 0 16px}
+.checks li{position:relative;padding-left:28px;margin-bottom:13px;font-size:13px;line-height:1.55;color:rgba(255,255,255,.8)}
+.checks li::before{
+  content:"";position:absolute;left:0;top:1px;width:18px;height:18px;border-radius:50%;background:var(--cian);
+}
+.checks li::after{
+  content:"";position:absolute;left:6px;top:6px;width:6px;height:3px;
+  border-left:1.8px solid #05080F;border-bottom:1.8px solid #05080F;transform:rotate(-45deg);
+}
+.plan__cta{margin-top:auto;padding-top:13px;text-align:center;align-self:stretch}
+
+/* cierre */
+.cierre{padding:96px 0 110px;border-top:1px solid rgba(255,255,255,.1)}
+.cierre h2{font-size:clamp(28px,3.4vw,38px);font-weight:900}
+.cierre .boton{margin-top:26px}
+.cierre__tel{margin-top:18px;font-size:13.5px;color:rgba(255,255,255,.55)}
+.cierre__tel a{color:var(--cian);text-decoration:none}
+
+.pie{padding:34px 0;border-top:1px solid rgba(255,255,255,.08);background:#03060B}
+.pie__caja{display:flex;flex-wrap:wrap;gap:14px 34px;align-items:center;font-size:12.5px;color:rgba(255,255,255,.55)}
+.pie a{color:var(--cian);text-decoration:none}
+.pie__copy{margin-left:auto}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width:1180px){
+  .hero__caja{column-gap:32px}
+  .celulares{height:580px}
+  .escena-cel{width:430px;height:580px}
+  .telefono{width:252px;height:512px}
+}
+
+@media (max-width:980px){
+  .pasos{grid-template-columns:repeat(2,1fr)}
+  .tira{grid-template-columns:1fr;gap:26px}
+  .bloques{grid-template-columns:1fr}
+  .planes{grid-template-columns:1fr;max-width:460px;margin-inline:auto}
+  .plan--destacado{order:-1}
+}
+
+@media (max-width:860px){
+  html{scroll-padding-top:74px}
+  .nav__links{display:none}
+
+  .hero{display:block;min-height:auto;padding:138px 0 104px;text-align:center}
+  .hero__caja{grid-template-columns:1fr;grid-template-rows:auto auto auto;row-gap:14px;justify-items:center}
+
+  /* el titulón no entra en 390px sin quedar cortado a la mitad */
+  .titulones{display:none}
+
+  .hero__texto{grid-column:1;grid-row:1;width:100%;max-width:460px;align-self:auto}
+  .celulares{grid-column:1;grid-row:2;width:100%;height:396px}
+  .hero__precio{grid-column:1;grid-row:3;align-self:auto;justify-items:center}
+  .escena-precio{justify-content:center}
+  .hero__nota{text-align:center}
+
+  .escena-cel{width:min(100% - 8px,344px);height:396px}
+  .telefono{width:178px;height:362px;border-radius:27px;padding:6px}
+  .telefono::before{width:48px;height:12px;top:10px}
+  .pantalla{border-radius:22px}
+  .telefono--frente{left:4px;top:6px}
+  .telefono--atras{right:4px;top:12px;transform:rotate(8deg) scale(.82)}
+  .telefono--solo{left:50%;top:6px;transform:translateX(-50%) rotate(-3deg)}
+  .ll-cab{padding:27px 12px 9px}
+  .ll-estado{font-size:7px;letter-spacing:.07em}
+  .ll-avatar{width:32px;height:32px;font-size:10.5px}
+  .ll-quien strong{font-size:11.5px}
+  .ll-quien small{font-size:8.5px;white-space:nowrap}
+  .chip{font-size:6.5px;padding:3px 8px}
+  .ll-trans{padding:10px 12px}
+  .ll-trans p{font-size:9px;line-height:1.45;margin-bottom:8px}
+  .ll-result{padding:9px 12px 12px}
+  .ll-result strong{font-size:9px}
+  .burb{font-size:8.5px}
+  .wa-header,.mn-header{padding-top:25px}
+
+  .flecha{top:auto;bottom:38px;transform:none;width:40px;height:40px}
+  .flecha--prev{left:14px}
+  .flecha--next{right:14px}
+  .selector{bottom:48px}
+
+  .flota{opacity:.42}
+  .flota--a{width:30%;top:1%;left:-9%}
+  .flota--b{width:30%;top:0;right:-9%}
+  .flota--c{width:26%;bottom:11%;left:-11%}
+  .flota--d{width:28%;bottom:9%;right:-11%}
+  .flota--e{display:none}
+
+  .seccion{padding:72px 0}
+  .seccion h2{max-width:none}
+}
+
+@media (max-width:620px){
+  .pasos{grid-template-columns:1fr}
+  .nav__cta{padding:9px 15px;font-size:10.5px}
+  .marca__texto small{display:none}
+  .escena-precio b{font-size:46px}
+  .pie__copy{margin-left:0;width:100%}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+  /* sin animación, que al menos se vea la primera pantalla de cada celular */
+  .pantalla .vista{opacity:0;transform:translateX(102%)}
+  .pantalla .vista:nth-child(1){opacity:1;transform:none}
+  .ll-scroll,.rg-scroll,.wa-scroll,.mn-scroll{transform:none !important}
+}
