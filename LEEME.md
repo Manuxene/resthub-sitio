@@ -23,7 +23,7 @@ git add -A
 git commit -m "Sitio RestHub-IA"
 ```
 
-⚠️ **Esta carpeta está dentro de OneDrive.** Git y OneDrive se llevan mal: OneDrive sincroniza los archivos internos de `.git` mientras git los está escribiendo y a veces rompe el repositorio. Antes de hacer lo de arriba, conviene **copiar esta carpeta a un lugar fuera de OneDrive** (por ejemplo `C:\Users\diego\proyectos\resthub-sitio`) y trabajar ahí.
+⚠️ **Si la carpeta está dentro de OneDrive, copiala antes a otro lado.** Git y OneDrive se llevan mal: OneDrive sincroniza los archivos internos de `.git` mientras git los está escribiendo y a veces rompe el repositorio. Trabajalo desde una carpeta común, por ejemplo `C:\Users\diego\proyectos\resthub-sitio`.
 
 ---
 
@@ -46,20 +46,18 @@ git push -u origin main
    (Es HTML plano, no hay nada que compilar. Si Vercel propone algo, borralo.)
 3. **Deploy**. En menos de un minuto queda online en `algo.vercel.app`.
 
-### 3. Enganchar `resthub.cloud`
-1. En Vercel: **Settings → Domains → Add**, escribí `resthub.cloud`.
-2. Vercel te muestra los registros que hay que cargar. Van a ser parecidos a esto —
-   **usá los valores que te dé Vercel, no estos**:
+### 3. Enganchar `agente.resthub.cloud`
+El dominio raíz `resthub.cloud` lo va a usar otra página, así que este sitio vive en el **subdominio** `agente.resthub.cloud`. Al ser un subdominio, alcanza con un solo registro CNAME — no toca el `@` ni el `www` del dominio raíz, así que no hay riesgo de pisar la otra página.
+
+1. En Vercel: **Settings → Domains → Add**, escribí `agente.resthub.cloud`.
+2. Vercel te va a mostrar un registro parecido a este — **usá el valor que te dé Vercel, no este**:
 
    | Tipo | Nombre | Valor |
    |---|---|---|
-   | A | `@` | la IP que te muestre Vercel |
-   | CNAME | `www` | `cname.vercel-dns.com` |
+   | CNAME | `agente` | `cname.vercel-dns.com` |
 
-3. En Hostinger: **hPanel → Dominios → `resthub.cloud` → Administrar → DNS / Nameservers**, y cargá esos registros.
+3. En Hostinger: **hPanel → Dominios → `resthub.cloud` → Administrar → DNS / Nameservers**, y agregá ese registro nuevo (no toques los que ya haya en `@` o `www` — esos son de la otra página).
 4. Esperá. Suele tomar minutos, a veces algunas horas. El HTTPS lo emite Vercel solo.
-
-⚠️ **Un dominio recién comprado ya viene con registros puestos** apuntando a la página de "en construcción" de Hostinger. Los `A` y `CNAME` que estén ahí hay que **reemplazarlos**, no agregar los de Vercel al lado. Si quedan los dos, el sitio anda a veces sí y a veces no, según a cuál le pegue cada visitante.
 
 ---
 
@@ -85,7 +83,7 @@ Si más adelante querés un formulario de contacto en el sitio en vez de mandar 
 
 **Los precios.** Están en `index.html`, en la portada y en la sección de planes. Si cambia alguno, revisá también el ahorro del Combinado: hoy dice USD 30 porque 250 + 60 = 310 contra 280. Si movés un precio, ese número deja de cerrar.
 
-**El dominio.** Está confirmado: **`resthub.cloud`**, activo en Hostinger, vence el **2027-08-03** con renovación automática encendida. Ya viene escrito así en los seis lugares donde hace falta (`canonical`, `og:url`, `og:image` y el JSON-LD en `index.html`, más `sitemap.xml` y `robots.txt`). **No hay que tocar nada.**
+**El dominio.** Este sitio vive en **`agente.resthub.cloud`** (subdominio — el dominio raíz `resthub.cloud` lo usa otra página). `resthub.cloud` está activo en Hostinger, vence el **2027-08-03** con renovación automática encendida. El subdominio ya viene escrito en los seis lugares donde hace falta (`canonical`, `og:url`, `og:image` y el JSON-LD en `index.html`, más `sitemap.xml` y `robots.txt`). **No hay que tocar nada**, salvo que en algún momento cambien de idea sobre qué subdominio usar.
 
 ⚠️ Antes de agosto de 2027, fijate cuánto sale la renovación. Los `.cloud` suelen contratarse barato el primer año y renovar a varias veces ese precio, y como tenés la renovación automática encendida se cobra sola. La renovación automática conviene dejarla prendida —perder el dominio es mucho peor— pero mirá el precio con tiempo.
 

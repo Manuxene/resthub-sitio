@@ -5,6 +5,22 @@
 
 ---
 
+## [2026-08-10 14:30] - Pasar el sitio de resthub.cloud a agente.resthub.cloud
+
+### Tipo de cambio
+- **CHANGED**: el dominio raíz `resthub.cloud` lo va a usar otra página, así que este sitio pasa a vivir en el subdominio `agente.resthub.cloud`.
+
+### Archivos afectados
+- `index.html` — `canonical`, `og:url`, `og:image` y el JSON-LD
+- `sitemap.xml` — `<loc>`
+- `robots.txt` — línea `Sitemap:`
+- `LEEME.md` — instrucciones de Vercel/Hostinger actualizadas a un único registro CNAME (`agente`) en vez de A (`@`) + CNAME (`www`)
+
+### Descripción detallada
+Al ser subdominio alcanza con un solo registro CNAME en Hostinger — no toca los registros del dominio raíz ni de `www`, que quedan libres para la otra página.
+
+---
+
 ## [2026-08-10 13:22] - Corregir el link "Cómo funciona" del nav
 
 ### Tipo de cambio

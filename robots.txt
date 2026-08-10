@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://resthub.cloud/sitemap.xml
+Sitemap: https://agente.resthub.cloud/sitemap.xml
