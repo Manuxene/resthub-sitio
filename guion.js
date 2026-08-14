@@ -80,7 +80,7 @@
   hero.addEventListener('touchend', function (e) {
     if (x0 === null) return;
     var dx = e.changedTouches[0].clientX - x0;
-    if (Math.abs(dx) > 45) ir(actual + (dx < 0 ? 1 : -1), true);
+    if (Math.abs(dx) > 45) ir(actual + (dx < 0 ? -1 : 1), true);
     x0 = null;
   }, { passive: true });
 
